@@ -11,4 +11,30 @@
 // var b = --a + --a;
 // document.write(b);   //will return -1
 
-var score = parseInt(window.prompt('input'));
+    //typeof & parse:
+var n = parseInt(window.prompt('input'), 2);
+document.write(n + " ");
+console.log(typeof(n));
+
+var demo = "120.23.45jnj";
+var num = parseFloat(demo);
+console.log(typeof(num) + " " + num);
+
+    //String, toString:
+var demo = "120";
+var num = String(demo);
+var num = demo.toString();  //equivalent writing method. Not applied to null or undefined
+console.log(typeof(num) + " " + num);
+
+    //object:
+var Object1 =
+{
+    //use ':' to assign the value
+    //key   value
+    Name : "Hey",
+    num : 5,
+    bii: false
+}
+//using '.' to access its property
+Object1.bii = true;
+
