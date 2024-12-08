@@ -14,9 +14,9 @@
 // document.write(b);   //will return -1
 
 //3. typeof & parse:
-var n = parseInt(window.prompt('input'), 2);
+/*var n = parseInt(window.prompt('input'), 2);
 document.write(n + " ");
-console.log(typeof(n));
+console.log(typeof(n));*/
 
 var demo = "120.23.45jnj";
 var num = parseFloat(demo);
@@ -54,4 +54,16 @@ function add (a, b)
     return a + b;
 }
 
-//7. 
+//7. arguments
+//function can take more variables than it declared, all variables will be stored in its arguments
+function sum(a, b)
+{
+    a = 4;
+    arguments[1] = 3;
+    console.log("the sum of the taking variables are" + (a + b));
+    console.log("the length of the argument is " + sum.arguments.length);  //how many parameters took when use will be the length of argument list: 5
+}
+sum(1,2,3,4,5);
+//then, if the parameters taking is less than it declared, the length still the taking amount:
+//for example, in sum(1) the b will be undefined and sum.arguments.length will be 1
+
