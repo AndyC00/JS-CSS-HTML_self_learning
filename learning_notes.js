@@ -1,4 +1,4 @@
-// 1. value
+//1. value
 // Primitive Value (Parameters store in Stack):
 // Types: Number, Boolean, String, undefined, null
 //      It's unable to change, represent the value itself, store in the stack
@@ -8,7 +8,7 @@
 //      The value stores a reference pointing to the object store in the memory, not store the object itself
 
 
-// 2. var
+//2. var
 // var a = 1;
 // var b = --a + --a;
 // document.write(b);   //will return -1
@@ -64,4 +64,27 @@ function sum(a, b) {
 sum(1, 2, 3, 4, 5);
 //then, if the parameters taking is less than it declared, the length still the taking amount:
 //for example, in sum(1) the b will be undefined and sum.arguments.length will be 1
+//naming rules: 
+//a, b are called Parameter/Formal Parameter
+//1, 2, 3, 4, 5 are called Argument/Actual Parameter
 
+//8. Hoisting:
+//Process of Hoisting: 
+    //1. Create AO (activation object)
+
+//no matter where declare the function, it will always be lifted up to the top (after variable declaration) when excuting the program
+test2();    //it can run
+function test2()    { }
+//variables declaration (but without assign value) will be hoisting to the top：
+console.log(p); //will print out undefined rather than report error
+var p;
+p = 2;
+
+//9.Scope
+//imply global:
+//window is the global scope: global variables all belong to object "window":
+var w = 2; 
+//equals to:
+window.w = 2;
+//if assign a value to a variable without declare, it will make the variable global:
+e = 3;  //e will be global variable and become a property of window
