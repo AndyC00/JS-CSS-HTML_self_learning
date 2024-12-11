@@ -42,6 +42,7 @@ Object1.bii = true;
 
 //6. funcion
 //using key word "function" to declare function, no return type like void, int, float...
+//can't define function within if(){}
 function test() { }
 //=
 var test = function () { };
@@ -68,10 +69,26 @@ sum(1, 2, 3, 4, 5);
 //a, b are called Parameter/Formal Parameter
 //1, 2, 3, 4, 5 are called Argument/Actual Parameter
 
-//8. Hoisting:
-//Process of Hoisting: 
-    //1. Create AO (activation object)
+//8.Scope
+//imply global:
+//window is the global scope: global variables all belong to object "window":
+var w = 2; 
+//equals to:
+window.w = 2;
+//if assign a value to a variable without declare, it will make the variable global:
+e = 3;  //e will be global variable and become a property of window
 
+//9. Hoisting (pre-compile):
+//Process of Hoisting in a function: 
+    //1. Create AO (activation object):     AO{ }
+    //2. looking for parameters and arguments, use their names as the AO's properties' names. The value will be undefined (doesn't matter for if() or for())
+    //3. sync the value of argument with the parameter
+    //4. looking for function declaration in this function
+    //5. then compile the rest of sentence in the function. after that, function finished
+//Process of Hoisting globally:
+    //1. Create GO (Global Object), GO === window, it's the same thing
+        //if there's a local variable has the same name as a global variable, it will try use the local variable first. If can't find it, then try using the global variable
+    //2. - 5. will be the same as hoisting in function
 //no matter where declare the function, it will always be lifted up to the top (after variable declaration) when excuting the program
 test2();    //it can run
 function test2()    { }
@@ -80,11 +97,3 @@ console.log(p); //will print out undefined rather than report error
 var p;
 p = 2;
 
-//9.Scope
-//imply global:
-//window is the global scope: global variables all belong to object "window":
-var w = 2; 
-//equals to:
-window.w = 2;
-//if assign a value to a variable without declare, it will make the variable global:
-e = 3;  //e will be global variable and become a property of window
