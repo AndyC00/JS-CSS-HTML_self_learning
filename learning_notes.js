@@ -98,7 +98,7 @@ var p;
 p = 2;
 
 //10. Property
-//All functions have properties without declare:
+//All functions have properties without declare. Those we can access:
 //Function.prototype, Function.length, Function.name, Function.caller, Function.arguments
 //Function.prototype: the prototype of the function
 //Function.length: the number of parameters the function takes
@@ -109,3 +109,13 @@ console.log(test2.prototype);    //will print out {}
 
 //11. Scope
 //scope of a function is the function itself and also one the properties: [[scope]] (but unable to access)
+//when function is excuting, it will create a inside object called AO (Activation Object) or excuting context.
+//A excuting context defines the context when function is excuting. Every excuting context is unique and everytime a function is excuting, it will create a new excuting context
+//So when excuting a function multiple times, it will create multiple excuting context
+//when the function is excuted, its excuting context will be destroyed
+//scope chain: the list of the excuting context stored in [[scope]] is called scope chain. The list connects context like a chain
+//when a function is excuting:
+    //1. create a reference of GO which is the copy of the global object. The GO will be the first object in the scope chain
+    //(if the function is within another function, the AO of the outer function will be the first object in the scope chain)
+    //2. create its own AO, upper AO to the top of the scope chain (GO comes to the second)
+//when searching a variable, it will search from the top of the scope chain to the bottom
