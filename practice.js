@@ -1,6 +1,6 @@
 //practice:
 function reverseAndTransfer() {
-    var num = window.prompt("input");
+    //var num = window.prompt("input");
     var result = ' ';
     for (var i = num.length - 1; i >= 0; i--) 
     {

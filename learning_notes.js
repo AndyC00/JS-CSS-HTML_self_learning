@@ -97,3 +97,15 @@ console.log(p); //will print out undefined rather than report error
 var p;
 p = 2;
 
+//10. Property
+//All functions have properties without declare:
+//Function.prototype, Function.length, Function.name, Function.caller, Function.arguments
+//Function.prototype: the prototype of the function
+//Function.length: the number of parameters the function takes
+//Function.name: the name of the function
+//Function.caller: the function that calls this function
+//Function.arguments: the arguments of the function
+console.log(test2.prototype);    //will print out {}
+
+//11. Scope
+//scope of a function is the function itself and also one the properties: [[scope]] (but unable to access)
