@@ -109,7 +109,7 @@ console.log(test2.prototype);    //will print out {}
 
 //11. Scope
 //scope of a function is the function itself and also one the properties: [[scope]] (but unable to access)
-//when function is excuting, it will create a inside object called AO (Activation Object) or excuting context.
+//when function is excuting, it will create a inside object called AO (Activation Object) or excuting context. (if the function is not excuting, the inside content won't be seen, for example it will not create AO)
 //A excuting context defines the context when function is excuting. Every excuting context is unique and everytime a function is excuting, it will create a new excuting context
 //So when excuting a function multiple times, it will create multiple excuting context
 //when the function is excuted, its excuting context will be destroyed
@@ -119,3 +119,19 @@ console.log(test2.prototype);    //will print out {}
     //(if the function is within another function, the AO of the outer function will be the first object in the scope chain)
     //2. create its own AO, upper AO to the top of the scope chain (GO comes to the second)
 //when searching a variable, it will search from the top of the scope chain to the bottom
+
+//12. Closure
+//If an inside function is stored in a variable and the outside function returns the inside function, the inside function will be called closure
+//The outside function will be destroyed after excuting, but the inside function will still have the scope chain of the outside function
+//The inside function can still access the outside function's variable
+function outer() 
+{
+    var a = 1;
+    function inner() 
+    {
+        console.log(a);
+    }
+    return inner;
+}
+var tests = outer();
+tests();    //will print out 1
