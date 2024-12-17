@@ -135,3 +135,18 @@ function outer()
 }
 var tests = outer();
 tests();    //will print out 1
+
+//13. Immediatly Invoked Function Expression (IIFE)
+//a function that is excuted immediately after it's created then destroyed
+//use (function(){})() or (function(){}())to create IIFE
+//can have name but it's not necessary
+//when taking parameters, it will be like:
+var num =
+(function(a, b, c)
+{
+    var d = a + b + c;
+    console.log(d);
+    return d;   //can return a value
+}(1, 2, 3));
+//!Only expressions can be executed with the invocation operator!
+
