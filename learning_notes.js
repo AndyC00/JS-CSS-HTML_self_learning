@@ -44,7 +44,23 @@ Object1.bii = true;
 //adding new property and value:
 Object1.age = 18;
 //if viewing a property which is not exist, it will return undefined
-    //2). structure object:
+    //2). constructor object:
+    //naming rule: the first letter should be capitalized
+    //use 'new' to create a constructor object:
+    function Person()
+    {
+        this.name = "Hey";
+        this.age = 18;
+        this.gamer = function () {console.log("I'm a gamer");}
+    }
+    var p = new Person();
+    //when keyword new is used, it will initially create a new object and return it:
+    /* function Person()
+    {
+        var this = {};
+        content...
+        return this;
+    } */
 
 //6. funcion
 //using key word "function" to declare function, no return type like void, int, float...
