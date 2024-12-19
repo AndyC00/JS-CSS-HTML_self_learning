@@ -29,20 +29,26 @@ var num = demo.toString();  //equivalent writing method. Not applied to null or 
 console.log(typeof (num) + " " + num);
 
 //5. object:
+    //1). plain object:
 var Object1 =
 {
     //use ':' to assign the value
     //key   value
     Name: "Hey",
     num: 5,
-    bii: false
+    bii: false,
+    gamer : function () {console.log("I'm a gamer");}
 }
 //using '.' to access its property
 Object1.bii = true;
+//adding new property and value:
+Object1.age = 18;
+//if viewing a property which is not exist, it will return undefined
+    //2). structure object:
 
 //6. funcion
 //using key word "function" to declare function, no return type like void, int, float...
-//can't define function within if(){}
+//can't define function within if() or for() or while() or switch()
 function test() { }
 //=
 var test = function () { };
@@ -149,4 +155,6 @@ var num =
     return d;   //can return a value
 }(1, 2, 3));
 //!Only expressions can be executed with the invocation operator!
-
+//So function test(){}(); will report error but not + function test(){};
+//invocation operator: ()
+//IIFT will ignore the name of the function
