@@ -1,4 +1,4 @@
-//practice:
+//practice 1:
 function reverseAndTransfer() {
     //var num = window.prompt("input");
     var result = ' ';
@@ -39,3 +39,25 @@ function reverseAndTransfer() {
     console.log(result);
 }
 reverseAndTransfer();
+
+//practice 2:
+function byteLength(str)
+{
+    var len = str.length;
+    var byteLen = 0;
+    for(var i = 0; i < len; i++)
+    {
+        if(str.charCodeAt(i) > 255)
+        {
+            byteLen += 2;
+        }
+        else
+        {
+            byteLen++;
+        }
+    }
+    return byteLen;
+}
+var str = "123456789asdaefdfdg#$%^&*(⑥Ⅵ⑦⑧⑨";
+console.log(byteLength(str));
+

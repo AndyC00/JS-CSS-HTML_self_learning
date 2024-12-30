@@ -174,3 +174,20 @@ var num =
 //So function test(){}(); will report error but not + function test(){};
 //invocation operator: ()
 //IIFT will ignore the name of the function
+
+//14. Prototype
+//prototype is a property of a function, it's an object
+//It defines the properties and methods of the parent object
+Person.prototype.age = 18;
+function Person() 
+{
+    this.age = 20;
+}
+var person = new Person();
+console.log(person.age);    //will print out 20 (using the property of the object itself first)
+Person.prototype.print = function() {console.log("Hello");}
+var person2 = new Person();
+person2.print();    //will print out Hello
+//when to use:
+//the properties and methods written in the constructor function will be created multiple times when creating new objects
+//so we can use prototype to create the properties and methods that all objects will share
