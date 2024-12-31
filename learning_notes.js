@@ -191,3 +191,12 @@ person2.print();    //will print out Hello
 //when to use:
 //the properties and methods written in the constructor function will be created multiple times when creating new objects
 //so we can use prototype to create the properties and methods that all objects will share
+//a object can be assigned to another object's prototype:
+var Object1 = {name: "WAAAAAAH"};
+person.prototype = Object1;
+//or
+person.__proto__ = Object1; //__proto__ is the prototype of the object
+//__proto__ and prototype are all pointing to the prototype of the object in the memory area
+//if changing the prototype of the object, the __proto__ will also change (will they are pointing to the same memory area)
+//however, either __proto__ or prototype can be changed by assigning a new object to it, after that, they will point to different memory area
+person.prototype = {};  //__proto__ will still point to the original memory area with name: "WAAAAAAH"
