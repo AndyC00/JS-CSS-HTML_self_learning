@@ -200,3 +200,39 @@ person.__proto__ = Object1; //__proto__ is the prototype of the object
 //if changing the prototype of the object, the __proto__ will also change (will they are pointing to the same memory area)
 //however, either __proto__ or prototype can be changed by assigning a new object to it, after that, they will point to different memory area
 person.prototype = {};  //__proto__ will still point to the original memory area with name: "WAAAAAAH"
+
+//15. Prototype Chain
+//looks like the Grand-Father-Son prototype chain,
+//However, the Grand has its own prototype: Object()
+//Object() is the prototype of all objects
+//Grand.prototype.__proto__ = Object.prototype
+Grand.prototype.Name = "Andy";
+function Grand()
+{
+    this.Fortune = {
+        Card1 : "Visa"
+    }
+}
+var grand = new Grand();
+
+Father.prototype = grand;
+function Father()
+{
+    this.lastName = "Smith";
+    this.hobbit =   {
+        hobbit1 : "Reading"
+    }
+}
+var father = new Father();
+
+Son.prototype = father;
+function Son()
+{
+    this.car = "BMW";
+}
+var son = new Son();
+son.toString(); //the toString() is a method of Object.prototype
+//child can't change the property of the parents directly, but it can change the property by reference:
+son.Name = "Tom";   //add "Tom" to the son but Father.prototype.Name won't change
+son.hobbit.hobbit2 = "Shopping"; //son's property won't change but father.prototype.Name will change
+son.Fortune.card2 = "Master";   //grand's property will change
