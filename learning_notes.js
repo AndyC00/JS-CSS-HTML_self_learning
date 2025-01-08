@@ -3,15 +3,18 @@
 // Types: Number, Boolean, String, undefined, null
 //      It's unable to change, represent the value itself, store in the stack
 
+
 // Reference Value (Parameters in Heap):
 // Types: Array, Object, Function
 //      The value stores a reference pointing to the object store in the memory, not store the object itself
+
 
 
 //2. var
 // var a = 1;
 // var b = --a + --a;
 // document.write(b);   //will return -1
+
 
 //3. typeof & parse:
 /*var n = parseInt(window.prompt('input'), 2);
@@ -22,11 +25,13 @@ var demo = "120.23.45jnj";
 var num = parseFloat(demo);
 console.log(typeof (num) + " " + num);
 
+
 //4. String, toString:
 var demo = "120";
 var num = String(demo);
 var num = demo.toString();  //equivalent writing method. Not applied to null or undefined
 console.log(typeof (num) + " " + num);
+
 
 //5. object:
     //1). plain object:
@@ -62,6 +67,7 @@ Object1.age = 18;
         return this;
     } */
 
+
 //6. funcion
 //using key word "function" to declare function, no return type like void, int, float...
 //can't define function within if() or for() or while() or switch()
@@ -76,6 +82,7 @@ function add(a, b) {
     return a + b;
 }
 
+
 //7. arguments
 //function can take more variables than it declared, all variables will be stored in its arguments
 function sum(a, b) {
@@ -87,9 +94,10 @@ function sum(a, b) {
 sum(1, 2, 3, 4, 5);
 //then, if the parameters taking is less than it declared, the length still the taking amount:
 //for example, in sum(1) the b will be undefined and sum.arguments.length will be 1
-//naming rules: 
+//naming rules:
 //a, b are called Parameter/Formal Parameter
 //1, 2, 3, 4, 5 are called Argument/Actual Parameter
+
 
 //8.Scope
 //imply global:
@@ -99,6 +107,7 @@ var w = 2;
 window.w = 2;
 //if assign a value to a variable without declare, it will make the variable global:
 e = 3;  //e will be global variable and become a property of window
+
 
 //9. Hoisting (pre-compile):
 //Process of Hoisting in a function: 
@@ -119,6 +128,7 @@ console.log(p); //will print out undefined rather than report error
 var p;
 p = 2;
 
+
 //10. Property
 //All functions have properties without declare. Those we can access:
 //Function.prototype, Function.length, Function.name, Function.caller, Function.arguments
@@ -128,6 +138,7 @@ p = 2;
 //Function.caller: the function that calls this function
 //Function.arguments: the arguments of the function
 console.log(test2.prototype);    //will print out {}
+
 
 //11. Scope
 //scope of a function is the function itself and also one the properties: [[scope]] (but unable to access)
@@ -141,6 +152,7 @@ console.log(test2.prototype);    //will print out {}
     //(if the function is within another function, the AO of the outer function will be the first object in the scope chain)
     //2. create its own AO, upper AO to the top of the scope chain (GO comes to the second)
 //when searching a variable, it will search from the top of the scope chain to the bottom
+
 
 //12. Closure
 //If an inside function is stored in a variable and the outside function returns the inside function, the inside function will be called closure
@@ -158,6 +170,7 @@ function outer()
 var tests = outer();
 tests();    //will print out 1
 
+
 //13. Immediatly Invoked Function Expression (IIFE)
 //a function that is excuted immediately after it's created then destroyed
 //use (function(){})() or (function(){}())to create IIFE
@@ -174,6 +187,7 @@ var num =
 //So function test(){}(); will report error but not + function test(){};
 //invocation operator: ()
 //IIFT will ignore the name of the function
+
 
 //14. Prototype
 //prototype is a property of a function, it's an object
@@ -201,10 +215,11 @@ person.__proto__ = Object1; //__proto__ is the prototype of the object
 //however, either __proto__ or prototype can be changed by assigning a new object to it, after that, they will point to different memory area
 person.prototype = {};  //__proto__ will still point to the original memory area with name: "WAAAAAAH"
 
+
 //15. Prototype Chain
 //looks like the Grand-Father-Son prototype chain,
 //However, the Grand has its own prototype: Object()
-//Object() is the prototype of all objects
+//Object() is the prototype of most of the objects
 //Grand.prototype.__proto__ = Object.prototype
 Grand.prototype.Name = "Andy";
 function Grand()
@@ -236,3 +251,56 @@ son.toString(); //the toString() is a method of Object.prototype
 son.Name = "Tom";   //add "Tom" to the son but Father.prototype.Name won't change
 son.hobbit.hobbit2 = "Shopping"; //son's property won't change but father.prototype.Name will change
 son.Fortune.card2 = "Master";   //grand's property will change
+//A way to create inherited objects:
+//Object.create(the prototype you want):
+grandson = Object.create(son);
+//Object() is the prototype of all the objects except undefined, null or:
+obj1 = Object.create(null);    //create a object without prototype
+
+//further more about prototype chain:
+//why abc.toSting() can work:
+//1. automatically create a object: var abc = new Object();
+//2. abc.__proto__ = Object.prototype
+//3. abc.toString() is a method of Object.prototype
+
+//the method of Object.prototype can be modified and applied to all the objects:
+Number.prototype.toString = function () { return "Hello"; }
+123..toString();    //will print out "Hello"
+
+//16. Calculation Accuracy:
+//The calculation accuracy of JavaScript is 16 numbers in front of the decimal point
+//and 16 numbers behind the decimal point
+console.log(0.10000000000000001 + 0.10000000000000001); // will return 0.2
+
+
+//17. call / apply
+//call():
+function test3(name, age)
+{
+    this.name = name;
+    this.age = age;
+}
+var person = new test3();
+var obj = {};
+
+test3.call(obj, "randomName", 18);    //the first parameter in call() is the object that the function will be called
+//the rest of the parameters are the parameters of the function
+//call() will change keyword "this" in the object pointing to the first parameter received
+console.log(test3.name);    //won't print out anything since this in the test3 is pointing to obj
+//use of call():
+function Person2(name, age, gender)
+{
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+}
+function Student(name, age, gender, grade, address)
+{
+    Person2.call(this, name, age, gender);
+    this.grade = grade;
+    this.address = address;
+}
+
+//apply():
+//call() needs to pass the arguments one by one, as same amount as the function's parameters
+//apply() needs to pass the arguments in a array
