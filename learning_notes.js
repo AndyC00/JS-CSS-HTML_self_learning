@@ -267,6 +267,7 @@ obj1 = Object.create(null);    //create a object without prototype
 Number.prototype.toString = function () { return "Hello"; }
 123..toString();    //will print out "Hello"
 
+
 //16. Calculation Accuracy:
 //The calculation accuracy of JavaScript is 16 numbers in front of the decimal point
 //and 16 numbers behind the decimal point
@@ -300,7 +301,40 @@ function Student(name, age, gender, grade, address)
     this.grade = grade;
     this.address = address;
 }
-
 //apply():
 //call() needs to pass the arguments one by one, as same amount as the function's parameters
-//apply() needs to pass the arguments in a array
+//apply() needs to pass the arguments in an array:
+function Student2(name, age, gender, grade, address)
+{
+    Person2.apply(this, [name, age, gender]);
+    this.grade = grade;
+    this.address = address;
+}
+
+//18. Inheritance
+//the idea of the inheritance:
+function inherit(Target, Origin)
+{
+    Target.prototype = Origin.prototype;    //but in this case when changing the Target.prototype, the Origin.prototype will also change
+}
+//Holy Grail Pattern (the inherit pattern with no issues):
+function inherit(Target, Origin)
+{
+    function F() { };
+    F.prototype = Origin.prototype;
+    Target.prototype = new F();
+    Target.prototype.constructor = Target;
+    Target.prototype.uber = Origin.prototype;
+}
+//further with function closure:
+var inherit = (function ()
+{
+    var F = function () { };
+    return function (Target, Origin)
+    {
+        F.prototype = Origin.prototype;
+        Target.prototype = new F();
+        Target.prototype.constructor = Target;
+        Target.prototype.uber = Origin.prototype;
+    }
+}());
