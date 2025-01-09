@@ -6,7 +6,7 @@
 .someClass
 {
     background-color: rgb(44, 118, 57);
-}
+}   
 
 .anotherClass
 {
@@ -30,5 +30,32 @@ div
 /* or */
 [id="someId"] {
     color: rgb(44, 118, 118);
+}
+/* or select class as a property */
+[class = "someClass"] {
+    color: rgb(44, 118, 118);
+}
+
+/* nested selector */
+div strong em {
+    background-color: rgb(118, 118, 44);
+}   /*em under strong within div*/
+.warpper .box em {
+    background-color: rgb(118, 118, 44);
+}   /*em under box within warpper*/
+
+/* direct child selector */
+div > em {
+    background-color: rgb(118, 118, 44);
+}   /*will select em under div rather than em under strong within div*/
+
+/* grouping selector/ grouped selector */
+div.demo {
+    background-color: rgb(118, 118, 44);
+}
+
+/* use example */
+div.warpper > [class = "box"] > div#only.box {
+    background-color: rgb(118, 118, 44);
 }
 
