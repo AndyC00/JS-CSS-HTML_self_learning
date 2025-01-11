@@ -338,3 +338,41 @@ var inherit = (function ()
         Target.prototype.uber = Origin.prototype;
     }
 }());
+
+
+//19. Using functions continuously
+var obj = {
+    gaming : function () {
+        console.log("Playing a game");
+        // will implicitly return undefined
+        return this;    //to make the function can be used continuously
+    },
+    studying : function () {
+        console.log("Studying");
+        return this;
+    },
+    reading : function () {
+        console.log("Reading a book");
+        return this;
+    },
+}
+obj.gaming().studying().reading().gaming();    //will print out the three sentences and return obj
+
+
+//20. []
+// when compiler read '.', it will convert it to '[]' first
+// obj.name = obj["name"] = obj["n" + "a" + "m" + "e"]
+// moreover:
+obj.sayHobby = function (hobby) {
+    return this[hobby + "ing"];
+}
+obj.sayHobby("gam");
+
+
+//21. for in
+//for in can be used to traverse the properties of an object
+//same as foreach in C#
+for (var prop in obj)
+{
+    console.log(prop + " : " + typeof(prop));
+}
