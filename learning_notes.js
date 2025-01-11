@@ -9,7 +9,6 @@
 //      The value stores a reference pointing to the object store in the memory, not store the object itself
 
 
-
 //2. var
 // var a = 1;
 // var b = --a + --a;
@@ -66,6 +65,7 @@ Object1.age = 18;
         content...
         return this;
     } */
+//!!note: the name for properties in the object are all string type
 
 
 //6. funcion
@@ -372,7 +372,27 @@ obj.sayHobby("gam");
 //21. for in
 //for in can be used to traverse the properties of an object
 //same as foreach in C#
-for (var prop in obj)
+for (var prop in obj)   //the prop here represents the key(name) of the property
 {
     console.log(prop + " : " + typeof(prop));
+}   //will print out the name of the properties and the types will always be string
+
+for (var prop in obj)
+{
+    console.log(obj[prop] + " : " + typeof(obj[prop]));
 }
+//will print out the value of the properties and the types of the values
+
+//However, the for in will also traverse the properties in the prototype chain (except the end of the prototype chain: Object.prototype, unless manuelly add the properties to the Object.prototype)
+//to avoid this, use hasOwnProperty():
+for (var prop in obj)
+{
+    if (obj.hasOwnProperty(prop))
+    {
+        console.log(prop + " : " + typeof(prop));
+    }
+}
+
+//22. instanceof
+//to check if B's prototype is on A's prototype chain:
+A instanceof B
