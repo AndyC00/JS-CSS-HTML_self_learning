@@ -187,6 +187,7 @@ var num =
 //So function test(){}(); will report error but not + function test(){};
 //invocation operator: ()
 //IIFT will ignore the name of the function
+({})(); //will report error
 
 
 //14. Prototype
@@ -393,6 +394,30 @@ for (var prop in obj)
     }
 }
 
-//22. instanceof
+
+//23. this
+//during the hoisting process in a function, the this will be assigned to window
+//In the global scope, this will be assigned to window\
+obj.func(); //the this in the function will be assigned to obj
+
+function test4() {console.log(this);}
+var a = {
+    say : function (fun) {
+        test4();    //will print out window
+    }
+}
+//to solve this problem, use this.test4() to explicitly change the this to obj a
+
+
+
+//Others...
+//null and undefined:
+null == undefined;  //will return true
+null === undefined; //will return false
+// === is the strict equal, it will compare the type and the value
+// == is the equal, it will compare the value only
+
+//instanceof:
 //to check if B's prototype is on A's prototype chain:
 A instanceof B
+
