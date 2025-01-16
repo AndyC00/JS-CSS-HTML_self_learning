@@ -113,7 +113,7 @@ e = 3;  //e will be global variable and become a property of window
 //Process of Hoisting in a function: 
     //1. Create AO (activation object):     AO{ }
     //2. looking for parameters and arguments, use their names as the AO's properties' names. The value will be undefined (doesn't matter for if() or for())
-    //3. sync the value of argument with the parameter
+    //3. assign the value to parameter if there are any passed arguments
     //4. looking for function declaration in this function
     //5. then compile the rest of sentence in the function. after that, function finished
 //Process of Hoisting globally:
@@ -441,3 +441,4 @@ function test5() {
     console.log(test5.caller);  //will print out null
     test6();    //will print out the function test5
 }
+
