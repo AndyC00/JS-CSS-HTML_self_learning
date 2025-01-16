@@ -411,13 +411,33 @@ var a = {
 
 
 //Others...
-//null and undefined:
+//a. null and undefined:
 null == undefined;  //will return true
 null === undefined; //will return false
 // === is the strict equal, it will compare the type and the value
 // == is the equal, it will compare the value only
 
-//instanceof:
+//b. instanceof:
 //to check if B's prototype is on A's prototype chain:
 A instanceof B
 
+//c. .callee
+//arguments.callee is the function itself
+test.arguments.callee === test; //will return true
+//example of usage:
+var factorial = function (n) {
+    if (n === 1) {
+        return 1;
+    }
+    return n * arguments.callee(n - 1);
+}
+
+//d. .caller
+//the function that calls the function
+function test5() {
+    function test6() {
+        console.log(test6.caller);
+    }
+    console.log(test5.caller);  //will print out null
+    test6();    //will print out the function test5
+}
