@@ -409,6 +409,43 @@ var a = {
 //to solve this problem, use this.test4() to explicitly change the this to obj a
 
 
+//24. clone
+var object1 = {
+    name: "abc",
+    age: 18,
+    card: ['1', '2', '3'],
+    family: {
+        name: "name",
+        grandparent: {
+            grandmom: "grandmom",
+            granddad: "granddad"
+        }
+    }
+}
+var object2 = {};
+//shallow clone:
+function clone(origin, target)
+{
+    var target = target || {};  //if target is not given, create a new object
+    for (var prop in origin)
+    {
+        target[prop] = origin[prop];
+    }
+}
+clone (object1, object2);
+obj1.card.push('4');    //object2.card will also add that
+//to solve this problem:
+//deep clone:
+function deepClone(origin, target)
+{
+    var target = target || {};
+    for (var prop in origin)
+    {
+        
+    }
+
+}
+
 
 //Others...
 //a. null and undefined:
