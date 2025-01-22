@@ -33,7 +33,7 @@ console.log(typeof (num) + " " + num);
 
 
 //5. object:
-    //1). plain object:
+//1). plain object:
 var Object1 =
 {
     //use ':' to assign the value
@@ -41,30 +41,29 @@ var Object1 =
     Name: "Hey",
     num: 5,
     bii: false,
-    gamer : function () {console.log("I'm a gamer");}
+    gamer: function () { console.log("I'm a gamer"); }
 }
 //using '.' to access its property
 Object1.bii = true;
 //adding new property and value:
 Object1.age = 18;
 //if viewing a property which is not exist, it will return undefined
-    //2). constructor object:
-    //naming rule: the first letter should be capitalized
-    //use 'new' to create a constructor object:
-    function Person()
-    {
-        this.name = "Hey";
-        this.age = 18;
-        this.gamer = function () {console.log("I'm a gamer");}
-    }
-    var p = new Person();
-    //when keyword new is used, it will initially create a new object and return it:
-    /* function Person()
-    {
-        var this = {};
-        content...
-        return this;
-    } */
+//2). constructor object:
+//naming rule: the first letter should be capitalized
+//use 'new' to create a constructor object:
+function Person() {
+    this.name = "Hey";
+    this.age = 18;
+    this.gamer = function () { console.log("I'm a gamer"); }
+}
+var p = new Person();
+//when keyword new is used, it will initially create a new object and return it:
+/* function Person()
+{
+    var this = {};
+    content...
+    return this;
+} */
 //!!note: the name for properties in the object are all string type
 
 
@@ -102,7 +101,7 @@ sum(1, 2, 3, 4, 5);
 //8.Scope
 //imply global:
 //window is the global scope: global variables all belong to object "window":
-var w = 2; 
+var w = 2;
 //equals to:
 window.w = 2;
 //if assign a value to a variable without declare, it will make the variable global:
@@ -111,18 +110,18 @@ e = 3;  //e will be global variable and become a property of window
 
 //9. Hoisting (pre-compile):
 //Process of Hoisting in a function: 
-    //1. Create AO (activation object):     AO{ }
-    //2. looking for parameters and arguments, use their names as the AO's properties' names. The value will be undefined (doesn't matter for if() or for())
-    //3. assign the value to parameter if there are any passed arguments
-    //4. looking for function declaration in this function
-    //5. then compile the rest of sentence in the function. after that, function finished
+//1. Create AO (activation object):     AO{ }
+//2. looking for parameters and arguments, use their names as the AO's properties' names. The value will be undefined (doesn't matter for if() or for())
+//3. assign the value to parameter if there are any passed arguments
+//4. looking for function declaration in this function
+//5. then compile the rest of sentence in the function. after that, function finished
 //Process of Hoisting globally:
-    //1. Create GO (Global Object), GO === window, it's the same thing
-        //if there's a local variable has the same name as a global variable, it will try use the local variable first. If can't find it, then try using the global variable
-    //2. - 5. will be the same as hoisting in function
+//1. Create GO (Global Object), GO === window, it's the same thing
+//if there's a local variable has the same name as a global variable, it will try use the local variable first. If can't find it, then try using the global variable
+//2. - 5. will be the same as hoisting in function
 //no matter where declare the function, it will always be lifted up to the top (after variable declaration) when excuting the program
 test2();    //it can run
-function test2()    { }
+function test2() { }
 //variables declaration (but without assign value) will be hoisting to the top：
 console.log(p); //will print out undefined rather than report error
 var p;
@@ -148,9 +147,9 @@ console.log(test2.prototype);    //will print out {}
 //when the function is excuted, its excuting context will be destroyed
 //scope chain: the list of the excuting context stored in [[scope]] is called scope chain. The list connects context like a chain
 //when a function is excuting:
-    //1. create a reference of GO which is the copy of the global object. The GO will be the first object in the scope chain
-    //(if the function is within another function, the AO of the outer function will be the first object in the scope chain)
-    //2. create its own AO, upper AO to the top of the scope chain (GO comes to the second)
+//1. create a reference of GO which is the copy of the global object. The GO will be the first object in the scope chain
+//(if the function is within another function, the AO of the outer function will be the first object in the scope chain)
+//2. create its own AO, upper AO to the top of the scope chain (GO comes to the second)
 //when searching a variable, it will search from the top of the scope chain to the bottom
 
 
@@ -158,11 +157,9 @@ console.log(test2.prototype);    //will print out {}
 //If an inside function is stored in a variable and the outside function returns the inside function, the inside function will be called closure
 //The outside function will be destroyed after excuting, but the inside function will still have the scope chain of the outside function
 //The inside function can still access the outside function's variable
-function outer() 
-{
+function outer() {
     var a = 1;
-    function inner() 
-    {
+    function inner() {
         console.log(a);
     }
     return inner;
@@ -177,12 +174,11 @@ tests();    //will print out 1
 //can have name but it's not necessary
 //when taking parameters, it will be like:
 var num =
-(function(a, b, c)
-{
-    var d = a + b + c;
-    console.log(d);
-    return d;   //can return a value
-}(1, 2, 3));
+    (function (a, b, c) {
+        var d = a + b + c;
+        console.log(d);
+        return d;   //can return a value
+    }(1, 2, 3));
 //!Only expressions can be executed with the invocation operator!
 //So function test(){}(); will report error but not + function test(){};
 //invocation operator: ()
@@ -194,20 +190,19 @@ var num =
 //prototype is a property of a function, it's an object
 //It defines the properties and methods of the parent object
 Person.prototype.age = 18;
-function Person() 
-{
+function Person() {
     this.age = 20;
 }
 var person = new Person();
 console.log(person.age);    //will print out 20 (using the property of the object itself first)
-Person.prototype.print = function() {console.log("Hello");}
+Person.prototype.print = function () { console.log("Hello"); }
 var person2 = new Person();
 person2.print();    //will print out Hello
 //when to use:
 //the properties and methods written in the constructor function will be created multiple times when creating new objects
 //so we can use prototype to create the properties and methods that all objects will share
 //a object can be assigned to another object's prototype:
-var Object1 = {name: "WAAAAAAH"};
+var Object1 = { name: "WAAAAAAH" };
 person.prototype = Object1;
 //or
 person.__proto__ = Object1; //__proto__ is the prototype of the object
@@ -223,27 +218,24 @@ person.prototype = {};  //__proto__ will still point to the original memory area
 //Object() is the prototype of most of the objects
 //Grand.prototype.__proto__ = Object.prototype
 Grand.prototype.Name = "Andy";
-function Grand()
-{
+function Grand() {
     this.Fortune = {
-        Card1 : "Visa"
+        Card1: "Visa"
     }
 }
 var grand = new Grand();
 
 Father.prototype = grand;
-function Father()
-{
+function Father() {
     this.lastName = "Smith";
-    this.hobbit =   {
-        hobbit1 : "Reading"
+    this.hobbit = {
+        hobbit1: "Reading"
     }
 }
 var father = new Father();
 
 Son.prototype = father;
-function Son()
-{
+function Son() {
     this.car = "BMW";
 }
 var son = new Son();
@@ -277,8 +269,7 @@ console.log(0.10000000000000001 + 0.10000000000000001); // will return 0.2
 
 //17. call / apply
 //call():
-function test3(name, age)
-{
+function test3(name, age) {
     this.name = name;
     this.age = age;
 }
@@ -290,14 +281,12 @@ test3.call(obj, "randomName", 18);    //the first parameter in call() is the obj
 //call() will change keyword "this" in the object pointing to the first parameter received
 console.log(test3.name);    //won't print out anything since this in the test3 is pointing to obj
 //use of call():
-function Person2(name, age, gender)
-{
+function Person2(name, age, gender) {
     this.name = name;
     this.age = age;
     this.gender = gender;
 }
-function Student(name, age, gender, grade, address)
-{
+function Student(name, age, gender, grade, address) {
     Person2.call(this, name, age, gender);
     this.grade = grade;
     this.address = address;
@@ -305,8 +294,7 @@ function Student(name, age, gender, grade, address)
 //apply():
 //call() needs to pass the arguments one by one, as same amount as the function's parameters
 //apply() needs to pass the arguments in an array:
-function Student2(name, age, gender, grade, address)
-{
+function Student2(name, age, gender, grade, address) {
     Person2.apply(this, [name, age, gender]);
     this.grade = grade;
     this.address = address;
@@ -314,13 +302,11 @@ function Student2(name, age, gender, grade, address)
 
 //18. Inheritance
 //the idea of the inheritance:
-function inherit(Target, Origin)
-{
+function inherit(Target, Origin) {
     Target.prototype = Origin.prototype;    //but in this case when changing the Target.prototype, the Origin.prototype will also change
 }
 //Holy Grail Pattern (the inherit pattern with no issues):
-function inherit(Target, Origin)
-{
+function inherit(Target, Origin) {
     function F() { };
     F.prototype = Origin.prototype;
     Target.prototype = new F();
@@ -328,11 +314,9 @@ function inherit(Target, Origin)
     Target.prototype.uber = Origin.prototype;
 }
 //further with function closure:
-var inherit = (function ()
-{
+var inherit = (function () {
     var F = function () { };
-    return function (Target, Origin)
-    {
+    return function (Target, Origin) {
         F.prototype = Origin.prototype;
         Target.prototype = new F();
         Target.prototype.constructor = Target;
@@ -343,16 +327,16 @@ var inherit = (function ()
 
 //19. Using functions continuously
 var obj = {
-    gaming : function () {
+    gaming: function () {
         console.log("Playing a game");
         // will implicitly return undefined
         return this;    //to make the function can be used continuously
     },
-    studying : function () {
+    studying: function () {
         console.log("Studying");
         return this;
     },
-    reading : function () {
+    reading: function () {
         console.log("Reading a book");
         return this;
     },
@@ -375,22 +359,19 @@ obj.sayHobby("gam");
 //same as foreach in C#
 for (var prop in obj)   //the prop here represents the key(name) of the property
 {
-    console.log(prop + " : " + typeof(prop));
+    console.log(prop + " : " + typeof (prop));
 }   //will print out the name of the properties and the types will always be string
 
-for (var prop in obj)
-{
-    console.log(obj[prop] + " : " + typeof(obj[prop]));
+for (var prop in obj) {
+    console.log(obj[prop] + " : " + typeof (obj[prop]));
 }
 //will print out the value of the properties and the types of the values
 
 //However, the for in will also traverse the properties in the prototype chain (except the end of the prototype chain: Object.prototype, unless manuelly add the properties to the Object.prototype)
 //to avoid this, use hasOwnProperty():
-for (var prop in obj)
-{
-    if (obj.hasOwnProperty(prop))
-    {
-        console.log(prop + " : " + typeof(prop));
+for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+        console.log(prop + " : " + typeof (prop));
     }
 }
 
@@ -400,9 +381,9 @@ for (var prop in obj)
 //In the global scope, this will be assigned to window\
 obj.func(); //the this in the function will be assigned to obj
 
-function test4() {console.log(this);}
+function test4() { console.log(this); }
 var a = {
-    say : function (fun) {
+    say: function (fun) {
         test4();    //will print out window
     }
 }
@@ -424,27 +405,50 @@ var object1 = {
 }
 var object2 = {};
 //shallow clone:
-function clone(origin, target)
-{
+function clone(origin, target) {
     var target = target || {};  //if target is not given, create a new object
-    for (var prop in origin)
-    {
+    for (var prop in origin) {
         target[prop] = origin[prop];
     }
 }
-clone (object1, object2);
+clone(object1, object2);
 obj1.card.push('4');    //object2.card will also add that
 //to solve this problem:
 //deep clone:
-function deepClone(origin, target)
+function deepClone(origin, target) 
 {
     var target = target || {};
-    for (var prop in origin)
+
+    toStr = Object.prototype.toString;
+    arrStr = "[object Array]";
+
+    for (var prop in origin) 
     {
-        
+        if (origin.hasOwnProperty(prop)) 
+        {
+            if (origin[prop] !== "null" && typeof (origin[prop]) == "object") 
+            {
+                target[prop] = (toStr.call(origin[prop]) == arrStr) ? [] : {};
+
+                deepClone(origin[prop], target[prop]);  //recursion
+            }
+            else
+            {
+                target[prop] = origin[prop];
+            }
+        }
     }
 
+    return target;
 }
+
+
+//25. trinomial operator
+// format:     condition ? true : false
+// if the condition is true, return the true excusion result, otherwise return false's
+//example:
+var p = 1 > 0 ? 2 + 2 : 1 + 1;
+console.log(p); //p will be 4
 
 
 //Others...
@@ -479,3 +483,4 @@ function test5() {
     test6();    //will print out the function test5
 }
 
+//e. 
