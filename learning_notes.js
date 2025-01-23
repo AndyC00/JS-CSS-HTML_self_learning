@@ -183,7 +183,7 @@ var num =
 //So function test(){}(); will report error but not + function test(){};
 //invocation operator: ()
 //IIFT will ignore the name of the function
-({})(); //will report error
+// ({})(); will report error
 
 
 //14. Prototype
@@ -379,7 +379,7 @@ for (var prop in obj) {
 //23. this
 //during the hoisting process in a function, the this will be assigned to window
 //In the global scope, this will be assigned to window\
-obj.func(); //the this in the function will be assigned to obj
+//obj.func(); the this in the function will be assigned to obj
 
 function test4() { console.log(this); }
 var a = {
@@ -412,7 +412,7 @@ function clone(origin, target) {
     }
 }
 clone(object1, object2);
-obj1.card.push('4');    //object2.card will also add that
+object1.card.push('4');    //object2.card will also add that
 //to solve this problem:
 //deep clone:
 function deepClone(origin, target) 
@@ -465,24 +465,81 @@ Array.prototype.push = function ()
 }
 
 //pop: cut the last element of the array and return it
-var numb = array1[1, 2, 3, 4, 5].pop;  //numb will be 5
+var array1 = [1, 2, 3, 4, 5];
+var numb = array1.pop;  //numb will be 5
 
 //shift: cut the first element of the array and return it
-numb = array1[1, 2, 3, 4, 5].shift;    //numb will be 1
+numb = array1.shift;    //numb will be 1
 
 //unshift: add the element to the front of the array and it's able to add multiple elements
 array1.unshift(0, -1, -2);
-console.log(array1);    //will print out [-2, -1, 0, 1, 2, 3, 4, 5]
+console.log(array1);    //will print out [0, -1, -2, 1, 2, 3, 4, 5]
 
 //splice: cut the elements from the array and return them
 //format: array.splice(the start buffer, deleteCount, addElement1, addElement2, ...)
-numb = array1.splice(1, 2); //numb will be [-1, 0]
-console.log(array1);    //will print out [-2, 1, 2, 3, 4, 5]
-array.splice(1, 0, 6, 7);   //will add 6, 7 to the array1
-console.log(array1);    //will print out [-2, 6, 7, 1, 2, 3, 4, 5]
+numb = array1.splice(1, 2); //numb will be [0, -1]
+console.log(array1);    //will print out [0, 1, 2, 3, 4, 5]
+array1.splice(1, 0, 6, 7);   //will add 6, 7 to the array1
+console.log(array1);    //will print out [0, 6, 7, 1, 2, 3, 4, 5]
 //the start buffer number can be minors, if it's minors, it will start counting from the end of the array
 
-//
+//sort: sort the array
+array1.sort();  //will sort the array in ascending order by ascii code
+console.log(array1);    //will print out [0, 1, 2, 3, 4, 5, 6, 7]
+array1.unshift(10, 20, 30);
+console.log(array1.sort());   //will print out [0, 1, 10, 2, 20, 3, 30, 4, 5, 6, 7]
+//to solve this problem, use a function to sort 
+//(has to take 2 parameters) and
+//when the return value is minors, the first parameter will be put in the front
+//when the return value is majors, the second parameter will be put in the front
+//when the return value is 0, the order won't change
+array1.sort(function(a, b){
+// if(a > b)
+// {
+//     return 1;
+// }
+// else if(a < b)
+// {
+//     return -1;
+// }
+// else
+// {
+//     return 0;
+// }
+return a - b;
+});
+console.log(array1);
+//disorder the array:
+array1.sort(function(a, b){
+    return Math.random() - 0.5;
+});
+console.log(array1);
+//sort the order of an object array by its property:
+var array2 = [{name: "Andy", age: 18}, {name: "Tom", age: 20}, {name: "Jerry", age: 15}];
+array2.sort(function(a, b){
+    return a.age - b.age;
+});
+console.log(array2);
+
+//slice:
+//format: array.slice(start buffer, until buffer)
+//will return the elements from start buffer to until buffer (but not cut from the original array)
+var numb = array1.sort(function(a, b){return a - b;}).slice(0, 2);
+console.log(numb);  //will print out [0, 1]
+newArray = array1.slice();  //return the entire array
+
+//join:
+//format: array.join(separator)
+//will join the elements of the array with the separator then return the array as a string
+var str = newArray.join("-");
+console.log(str);    //will print out 0-1-2-3-4-5-6-7-10-20-30
+//split:
+//format: string.split(separator)
+//will split the string into an array with the separator
+var array3 = str.split("-");
+console.log(array3);    //will print out [0, 1, 2, 3, 4, 5, 6, 7, 10, 20, 30]
+
+//class Array:
 
 
 
@@ -495,11 +552,11 @@ null === undefined; //will return false
 
 //b. instanceof:
 //to check if B's prototype is on A's prototype chain:
-A instanceof B
+// A instanceof B
 
 //c. .callee
 //arguments.callee is the function itself
-test.arguments.callee === test; //will return true
+// object1.arguments.callee === object1; //will return true
 //example of usage:
 var factorial = function (n) {
     if (n === 1) {
