@@ -451,6 +451,41 @@ var p = 1 > 0 ? 2 + 2 : 1 + 1;
 console.log(p); //p will be 4
 
 
+//26. array
+//array is special type of object, the index is the property of the object
+
+//simulate push function for array:
+Array.prototype.push = function () 
+{
+    for (var i = 0; i < arguments.length; i++) 
+    {
+        this[this.length] = arguments[i];
+    }
+    return this.length;
+}
+
+//pop: cut the last element of the array and return it
+var numb = array1[1, 2, 3, 4, 5].pop;  //numb will be 5
+
+//shift: cut the first element of the array and return it
+numb = array1[1, 2, 3, 4, 5].shift;    //numb will be 1
+
+//unshift: add the element to the front of the array and it's able to add multiple elements
+array1.unshift(0, -1, -2);
+console.log(array1);    //will print out [-2, -1, 0, 1, 2, 3, 4, 5]
+
+//splice: cut the elements from the array and return them
+//format: array.splice(the start buffer, deleteCount, addElement1, addElement2, ...)
+numb = array1.splice(1, 2); //numb will be [-1, 0]
+console.log(array1);    //will print out [-2, 1, 2, 3, 4, 5]
+array.splice(1, 0, 6, 7);   //will add 6, 7 to the array1
+console.log(array1);    //will print out [-2, 6, 7, 1, 2, 3, 4, 5]
+//the start buffer number can be minors, if it's minors, it will start counting from the end of the array
+
+//
+
+
+
 //Others...
 //a. null and undefined:
 null == undefined;  //will return true
