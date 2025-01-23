@@ -539,7 +539,19 @@ console.log(str);    //will print out 0-1-2-3-4-5-6-7-10-20-30
 var array3 = str.split("-");
 console.log(array3);    //will print out [0, 1, 2, 3, 4, 5, 6, 7, 10, 20, 30]
 
-//class Array:
+//Array-like object:
+//to create an array-like object:
+//1. the property name should be index (number)
+//2. It must have a length property
+var obj2 = {
+    0: "a",
+    1: "b",
+    2: "c",
+    length: 3,
+    push: Array.prototype.push,
+    splice: Array.prototype.splice
+}
+//Array-like object can't use the array's method directly, but can use the array's method by assigning the method to the object
 
 
 
