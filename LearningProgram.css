@@ -104,4 +104,23 @@ span {
     border-bottom-left-radius: 10px; /* set border radius for bottom left corner */
     border-right-color: transparent;
 
+    text-align: center; /* set text alignment on width */
+    line-height: height; /* to set the line of text in center of the container */
+
+    text-indent: 2em; /* set the indentation of the first line of text */
+    /* 1em = 1 * font-size = 12px here */
+
+    text-decoration: line-through; /* set the text decoration */
+
+    cursor: pointer;    /* set the cursor style */
+}
+
+a:hover{    /* hover only apply for bulk or link */
+    background-color: rgb(118, 118, 44);
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: arial;
+    border-radius: 10px;
+    text-indent: 2em;
 }
