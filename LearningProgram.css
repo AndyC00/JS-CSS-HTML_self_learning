@@ -1,3 +1,4 @@
+/* SELECTORS: */
 #someId
 {
     background-color: rgb(117, 44, 44);
@@ -59,3 +60,48 @@ div.warpper > [class = "box"] > div#only.box {
     background-color: rgb(118, 118, 44);
 }
 
+/* selecting weight */
+/* div: 1, .box: 10, # only: 100
+    if there are multiple selectors with the same weight, the last one will be applied
+    
+    if there are multiple selectors applied and selected, the weight will be added up:
+    div .classP #idP{
+        background-color: rgb(118, 118, 44);
+    }
+    weight: 1 + 10 + 100 = 111
+
+    !important will override the weight to infinity */
+
+
+/* Group Selector */
+.demo1, .demo2, .demo3 {
+    background-color: rgb(118, 118, 44);
+}
+
+
+/* Properties: */
+span {
+    font-size: 12;  /* set the height of the font */
+    font-weight: bold;  /* make the text strong */
+    font-style: italic; /* make the text italic */
+    font-family: arial; /* set the calligraphic style */
+
+    /* set color 1 */
+    color: #ff4400; /* start with #
+              R G B
+    first 2 letters represent for red, 0 means the minimum saturation, ff means maximum
+    second 2 letters represent for green
+    last 2 letters represent for blue 
+    if 2 letters for one color are same, they can be omitted:*/
+    color: #f40;
+    /* set color 2 */
+    color: rgb(255, 44, 0); /* set number range from 0 to 255 */
+
+    border:1px solid #000; /* set border with 1px width, style and color */
+    /* border style: soild, dashed, dotted */
+    border-left: 2px solid #f00; /* set border for left side */
+    border-top-color: #0f0; /* set border color for top side */
+    border-bottom-left-radius: 10px; /* set border radius for bottom left corner */
+    border-right-color: transparent;
+
+}
