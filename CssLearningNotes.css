@@ -1,4 +1,4 @@
-/* SELECTORS: */
+/* 1. SELECTORS: */
 #someId
 {
     background-color: rgb(117, 44, 44);
@@ -54,13 +54,18 @@ div > em {
 div.demo {
     background-color: rgb(118, 118, 44);
 }
-
 /* use example */
 div.warpper > [class = "box"] > div#only.box {
     background-color: rgb(118, 118, 44);
 }
 
-/* selecting weight */
+/* Group Selector */
+.demo1, .demo2, .demo3 {
+    background-color: rgb(118, 118, 44);
+}
+
+
+/* 2. selecting weight */
 /* div: 1, .box: 10, # only: 100
     if there are multiple selectors with the same weight, the last one will be applied
     
@@ -73,13 +78,7 @@ div.warpper > [class = "box"] > div#only.box {
     !important will override the weight to infinity */
 
 
-/* Group Selector */
-.demo1, .demo2, .demo3 {
-    background-color: rgb(118, 118, 44);
-}
-
-
-/* Properties: */
+/* 3. Properties: */
 span {
     font-size: 12;  /* set the height of the font */
     font-weight: bold;  /* make the text strong */
@@ -125,6 +124,8 @@ a:hover{    /* hover only apply for bulk elements or link */
     text-indent: 2em;
 }
 
+
+/* 4. Inline & block elements */
 /* Inline elements */
 /* 
 feature: the content decide the position of the element,
@@ -159,3 +160,20 @@ div{
     height: 100px; /* can't change the width and height after changed it to inline element */
 }
 
+
+/* 5. Box Model */
+/* 
+    border: border-width border-style border-color;
+    margin: margin-top margin-right margin-bottom margin-left;
+    padding: padding-top padding-right padding-bottom padding-left;
+    content: width, height;
+*/
+[class = "boxModel"]{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    border: 10px solid #000;
+    margin: 10px;
+    padding: 10px 20px 30px 40px;   /* padding for: top right bottom left */
+    display: block;
+}
