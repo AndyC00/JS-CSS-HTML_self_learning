@@ -173,7 +173,54 @@ div{
     height: 100px;
     background-color: aqua;
     border: 10px solid #000;
-    margin: 10px;
-    padding: 10px 20px 30px 40px;   /* padding for: top right bottom left */
+    padding: 10px 20px 30px 40px;   /* padding for: top right bottom left (clockwise) */
+    /* if only wants to set a single direction of padding: "padding: 100px 0 0 0" */
+    margin: 10px 20px 30px; /* 3 margin numbers for: top right&left bottom */
     display: block;
+}
+/* example: far view picture*/
+div{
+    display: block;
+}
+.content1{
+    height: 10px;
+    width: 10px;
+    background-color: green;
+}
+.content{
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    background-color: greenyellow;
+}
+.box{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    background-color: aqua;
+}
+.wrapper{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-color: blue;
+}
+
+/* 6. absolute */
+/*
+    1). detach from the original position and layer
+    2). able to set the position by top, right, bottom, left
+    3). able to be covered by other elements
+*/
+.someClass{
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    /* or bottom + right */
+}
+
+/* 7. body: the whole page itself */
+body{
+    margin: 0;
+    padding: 0;
 }
