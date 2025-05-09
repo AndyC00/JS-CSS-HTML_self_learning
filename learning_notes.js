@@ -51,7 +51,8 @@ Object1.age = 18;
 //2). constructor object:
 //naming rule: the first letter should be capitalized
 //use 'new' to create a constructor object:
-function Person() {
+function Person()
+{
     this.name = "Hey";
     this.age = 18;
     this.gamer = function () { console.log("I'm a gamer"); }
@@ -76,7 +77,8 @@ var test = function () { };
 //or
 var test = function abc() { }; //name abc will be ignored (but print out test.name will show "abc" rather than "test")
 //no type in front of taking variables:
-function add(a, b) {
+function add(a, b)
+{
     document.write(a + b);
     return a + b;
 }
@@ -84,7 +86,8 @@ function add(a, b) {
 
 //7. arguments
 //function can take more variables than it declared, all variables will be stored in its arguments
-function sum(a, b) {
+function sum(a, b)
+{
     a = 4;
     arguments[1] = 3;
     console.log("the sum of the taking variables are " + (a + b));
@@ -140,7 +143,7 @@ console.log(test2.prototype);    //will print out {}
 
 
 //11. Scope
-//scope of a function is the function itself and also one the properties: [[scope]] (but unable to access)
+//scope of a function is the function itself and also one of the properties: [[scope]] (but unable to access)
 //when function is excuting, it will create a inside object called AO (Activation Object) or excuting context. (if the function is not excuting, the inside content won't be seen, for example it will not create AO)
 //A excuting context defines the context when function is excuting. Every excuting context is unique and everytime a function is excuting, it will create a new excuting context
 //So when excuting a function multiple times, it will create multiple excuting context
@@ -157,9 +160,11 @@ console.log(test2.prototype);    //will print out {}
 //If an inside function is stored in a variable and the outside function returns the inside function, the inside function will be called closure
 //The outside function will be destroyed after excuting, but the inside function will still have the scope chain of the outside function
 //The inside function can still access the outside function's variable
-function outer() {
+function outer()
+{
     var a = 1;
-    function inner() {
+    function inner()
+    {
         console.log(a);
     }
     return inner;
@@ -174,7 +179,8 @@ tests();    //will print out 1
 //can have name but it's not necessary
 //when taking parameters, it will be like:
 var num =
-    (function (a, b, c) {
+    (function (a, b, c)
+    {
         var d = a + b + c;
         console.log(d);
         return d;   //can return a value
@@ -207,7 +213,7 @@ person.prototype = Object1;
 //or
 person.__proto__ = Object1; //__proto__ is the prototype of the object
 //__proto__ and prototype are all pointing to the prototype of the object in the memory area
-//if changing the prototype of the object, the __proto__ will also change (will they are pointing to the same memory area)
+//if changing the prototype of the object, the __proto__ will also change (while they are pointing to the same memory area)
 //however, either __proto__ or prototype can be changed by assigning a new object to it, after that, they will point to different memory area
 person.prototype = {};  //__proto__ will still point to the original memory area with name: "WAAAAAAH"
 
@@ -405,9 +411,11 @@ var object1 = {
 }
 var object2 = {};
 //shallow clone:
-function clone(origin, target) {
+function clone(origin, target)
+{
     var target = target || {};  //if target is not given, create a new object
-    for (var prop in origin) {
+    for (var prop in origin)
+    {
         target[prop] = origin[prop];
     }
 }
@@ -587,4 +595,22 @@ function test5() {
     test6();    //will print out the function test5
 }
 
-//e. 
+//e. remove duplicate elements from array
+var array4 = [1, 2, 3, 4, 5, 1, 2, 3];
+Array.prototype.unique = function ()
+{
+    var temp = {};
+    var arr = [];
+    len = this.length;
+
+    for (var i = 0; i < len; i++)
+    {
+        if (!temp[this[i]])
+        {
+            temp[this[i]] = "abc";
+            arr.push(this[i]);
+        }
+    }
+
+    return arr;
+}
