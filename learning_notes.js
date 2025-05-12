@@ -614,3 +614,10 @@ Array.prototype.unique = function ()
 
     return arr;
 }
+
+//f. Object package:
+var num = 123;
+num.abc = "abc";    //Primitive value can't add properties
+//to avoid error what backend will do: new Number(num).abc = "abc";  then delete num.abc
+console.log(num.abc);   //will new Number(num) to avoid error
+// the result will be undefined
