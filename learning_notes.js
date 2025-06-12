@@ -621,3 +621,19 @@ num.abc = "abc";    //Primitive value can't add properties
 //to avoid error what backend will do: new Number(num).abc = "abc";  then delete num.abc
 console.log(num.abc);   //will new Number(num) to avoid error
 // the result will be undefined
+
+//g. Object.create()
+var demo = {
+    name: "Andy"
+}
+var obj3 = Object.create(demo); //obj3 will have the prototype of demo
+//obj = {
+//    __proto__: demo
+//}
+//syntax: Object.create(prototype, definedProperty)
+
+//h. delete
+//delete the property of an object but cannot delete the global property
+delete obj3.name; //will delete the property name of obj3
+delete obj3; //will delete the object obj3
+
