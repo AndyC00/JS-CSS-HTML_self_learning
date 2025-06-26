@@ -211,6 +211,8 @@ div{
     1). detach from the original position and layer
     2). able to set the position by top, right, bottom, left
     3). able to be covered by other elements
+
+    left original position to relocate based on the first parent element with location property (absolute, relative), if doesn't find, it will be based on the body element.
 */
 .someClass{
     position: absolute;
@@ -219,8 +221,30 @@ div{
     /* or bottom + right */
 }
 
-/* 7. body: the whole page itself */
+/* 7. relative */
+/*
+    position relative to the original position and layer
+
+    tips: use relative to set the position of the element, then use absolute to set the position of the child element.
+*/
+
+/* 8. body: the whole page itself */
 body{
     margin: 0;
     padding: 0;
+}
+
+/* 9. fix */
+/*
+    keep the element in the same position on the screen, even when scrolling
+*/
+div {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    margin-left: -100px;
+    margin-top: -100px;
 }
