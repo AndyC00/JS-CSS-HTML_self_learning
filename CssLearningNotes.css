@@ -248,3 +248,18 @@ div {
     margin-left: -100px;
     margin-top: -100px;
 }
+
+/* 10. BFC (block format context) */
+/* 
+    1). a block-level box that is isolated from the rest of the page
+    2). used to control the layout of the page
+    3). used to prevent margin collapse
+    4). used to prevent float elements from affecting the layout of the page
+    5). used to prevent overflow elements from affecting the layout of the page
+
+    how to trigger BFC (choose either one):
+    overflow: hidden;
+    position: absolute;
+    display: inline-block;
+    float: left/right;
+*/
