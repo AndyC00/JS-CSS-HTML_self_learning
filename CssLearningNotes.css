@@ -263,3 +263,20 @@ div {
     display: inline-block;
     float: left/right;
 */
+
+/* 11. Float */
+/* 
+    1). used to position elements to the left or right within their container
+    2). used to create a layout where elements are positioned next to each other
+    3). used to create a layout where elements are positioned in a grid-like structure
+    4). used to create a layout where elements are positioned in a column-like structure
+    how to use float:
+    float: left; or right
+
+    NOTE: float elementes create float context, which is a special context that allows elements to be positioned next to each other.
+    block elements will not respond to float elements, but inline elements and BFC will.
+
+    how to clear float:
+    the next element after the float element will be positioned below the float element, so to clear the float, use:
+    clear: both;
+*/
