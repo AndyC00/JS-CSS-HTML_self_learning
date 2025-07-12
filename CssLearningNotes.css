@@ -19,7 +19,7 @@ div
     color: rgb(48, 44, 118);
 }
 
-/* wildcard selector: */
+/* wildcard selector/ universal selector: */
 * {
     color: rgb(118, 44, 44);
 }
@@ -273,10 +273,23 @@ div {
     how to use float:
     float: left; or right
 
-    NOTE: float elementes create float context, which is a special context that allows elements to be positioned next to each other.
-    block elements will not respond to float elements, but inline elements and BFC will.
-
     how to clear float:
     the next element after the float element will be positioned below the float element, so to clear the float, use:
-    clear: both;
+    clear: both; or clear: left/right
+
+    NOTE: float elementes create float context, which is a special context that allows elements to be positioned next to each other.
+    block elements will not respond to float elements, but inline elements and BFC will.
+    if it's an inline elements but need to clear float, use 
+        display: block;
+    to make the element a block element, so it will clear the float.
 */
+
+/* 12. pseudo-element */
+span::before {
+    content: "Before: ";
+    color: red;
+}
+span::after {
+    content: " After";
+    color: blue;
+}
