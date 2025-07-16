@@ -293,3 +293,9 @@ span::after {
     content: " After";
     color: blue;
 }
+/* to clear float: */
+span::after {
+    content: "";
+    display: block;
+    clear: both;
+}
